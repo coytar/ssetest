@@ -1,0 +1,21 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script type='text/javascript'>
+        var event = new EventSource('http://localhost:3000/sse');
+        event.onopen = () => console.log("Listening...");
+        event.onmessage = function (e) {
+            console.log(e);
+        }
+        event.addEventListener('completed', message => {
+            console.log("Completed.");
+            event.close();
+        })
+    </script>
+</body>
+
+</html>
